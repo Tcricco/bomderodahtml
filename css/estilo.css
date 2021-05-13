@@ -1,0 +1,15 @@
+#splash{
+background-image: url("../img/bksplash.gif");
+background-size: cover;
+}
+
+#bordaSplash{
+    height: 33vh;
+}
+
+#formLogin {
+    text-align: center;
+    height: 34vh;
+    background-color:white;
+    opacity: .75;
+}
