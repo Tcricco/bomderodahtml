@@ -5,41 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
+    <title>jogo</title>
 </head>
-<body style="background-color: black;color:white">
+<body style="background-color: black;">
     <div class="container-fluid">
-        <div class="row" style="height: 2vh;"></div>
+        <div class="row" style="width: 100vw; height: 56.25vh; background-image: url('img/road.gif');background-size:cover;">
+        <div class="row" style="background-color: rgba(0,0,0,.5); color: white;width: 100vh;">
+            <div class="col-5" style="margin-left: 5vw;">
+                <div class="row" id="Acertos">Acertos: 0</div>
+                <div class="row" id="Erros">Erros: <table><tr>
+                    <td style="background-color:black;border-style: double; border-color:black; height: 2.5vh; width:1vw;"></td>
+                    <td style="background-color: lime;border-style: double; border-color: white; height: 2.5vh; width:2.5vw;"></td>
+                    <td style="background-color:black;border-style: double; border-color:black; height: 2.5vh; width:1vw;"></td>
+                    <td style="background-color: lime;border-style: double; border-color: white; height: 2.5vh; width:2.5vw;"></td>
+                    <td style="background-color:black;border-style: double; border-color:black; height: 2.5vh; width:1vw;"></td>
+                    <td style="background-color: lime;border-style: double; border-color: white; height: 2.5vh; width:2.5vw;"></td>
+                    <td style="background-color:black;border-style: double; border-color:black; height: 2.5vh; width:1vw;"></td>
+                </tr></table> (0)</div>
+            </div>
+            <div class="col-6" style="text-align: right;">
+                Vidas:<br>
+                <img src="img/heart.gif" alt="" style="height: 2.5vh;width: auto;">
+                <img src="img/heart.gif" alt="" style="height: 2.5vh;width: auto;">
+                <img src="img/heart.gif" alt="" style="height: 2.5vh;width: auto;">
+            </div>
+       
+        </div>
+        <div class="row" style="width:100%; height: 51.25vh; background-color: transparent;">.</div>
+        </div>
         <div class="row">
-         <div class="col-2">
-             <b>Vidas</b>
-         </div>
-         <div class="col-1" style="background-color: red; border-color: white; border-style: double;"></div>   
-         <div class="col-1" style="background-color: red; border-color: white; border-style: double;"></div>   
-         <div class="col-1" style="background-color: red; border-color: white; border-style: double;"></div>    
-        <div class="col-2">
-            <b>Erros</b>
-        </div>
-        <div class="col-1" style="background-color: orange; border-color: white; border-style: double;"></div>   
-        <div class="col-1" style="background-color: orange; border-color: white; border-style: double;"></div>   
-        <div class="col-1" style="background-color: orange; border-color: white; border-style: double;"></div>   
-        </div>
-    </div>
-    <div class="row" style="height: 2vh;"></div>
-    <div class="row" style="background:url('img/pista.gif');width: 100%; height: 50vh;background-position: center;background-size: cover;"></div>
-    <div class="row" style="height: 2vh;"></div>
-    <div class="row">
-        <div class="col" style="width: 100%; text-align: center;">
-            <h4>Qual placa é essa?</h4>
-            <button class="btn btn-primary" style="width: 80%;">Velocidade 80 km/h</button>
-            <button class="btn btn-primary" style="width: 80%;">Proibido Estacionar</button>
-            <button class="btn btn-primary" style="width: 80%;">Animais a frente</button>
-            <button class="btn btn-primary" style="width: 80%;">Velocidade 80 km/h</button><br><br>
-            <a href="main.html"><button class="btn btn-danger" style="width: 80%;">Desistir</button></a>
+            <div class="col-12" style="font-size:small; color: white; text-align: center;">
+                <h4>Identifique a placa</h4><br>
+                <button class="btn rounded btn-primary">Opção 1</button><br>
+                <button class="btn rounded btn-primary">Opção 2</button><br>
+                <button class="btn rounded btn-primary">Opção 3</button><br><br>
+                <button class="btn rounded btn-danger">Desistir</button>
+            </div>
         </div>
     </div>
     <audio preload="auto" autoplay>
-        <source src="audio/main.mp3" type="audio/mpeg">
+        <source src="audio/jogo.mp3" type="audio/mpeg">
     </audio>
 </body>
 <script src="js/bootstrap.bundle.min.js"></script>
