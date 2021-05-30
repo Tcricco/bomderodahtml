@@ -5,16 +5,88 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Bom de Roda - Apresentação</title>
-	<meta http-equiv="Refresh" content="5;url=login.html">
+	<!--<meta http-equiv="Refresh" content="5;url=login.html">-->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 	<body style="background-image: url('img/fundopage.gif');background-color: white;background-size: cover;">
-		<div style="height: 40vh; width:100 vw">.</div>
-		<div style="width: 100vw; height: 60vh; text-align: center; color: red;font-size: x-large;">
-			<h1>bom<b style="color:black">de</b>roda</h1>
+		<div style="height: 33vh; width:100 vw">.</div>
+		<div style="width: 100vw; height: 40vh; text-align: center; color: red;font-size: x-large;">
+			<h1>bom<b style="color:black">de</b>roda</h1><br><br>
+			<img src="img/loading.gif" alt=""><br>
+			<b>Carregando ...</b>
 		</div>
-		
+		<audio preload="auto" autoplay>
+			<source src="audio/entrada.mp3" type="audio/mpeg">
+		</audio>
+		<script>
+			var db = openDatabase('parametros', '1.0', 'banco de dados embarcado do apk', 2*1024*1024);
 
+			db.transaction(function (tx) {
+
+				tx.executeSql("CREATE TABLE IF NOT EXISTS parametro (codigo INTEGER  NOT NULL,nome TEXT,valor TEXT,PRIMARY KEY(codigo));");
+
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (1,'email','');        ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (2,'senha','');        ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (3,'nome','');         ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (4,'data','');         ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (5,'termos','');       ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (6,'loginsalvo','');   ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (7,'vidas','');        ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (8,'acertos','');      ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (9,'erros','');        ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (10,'errostotal','');  ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (11,'nome1lugar','');  ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (12,'pontos1lugar','');");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (13,'nome2lugar','');  ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (14,'pontos2lugar','');");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (15,'nome3lugar','');  ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (16,'pontos3lugar','');");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (17,'nome4lugar','');  ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (18,'pontos4lugar','');");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (19,'nome5lugar','');  ");
+				tx.executeSql("INSERT INTO parametro(codigo,nome, valor) values (20,'pontos5lugar','');");
+
+			});
+
+
+			var db = openDatabase('parametros', '1.0', 'banco de dados embarcado do apk', 2*1024*1024);
+
+			db.transaction(function(tx) {
+        		tx.executeSql('SELECT * FROM parametro', [], function (tx, resultado) {
+
+					var info='main.html?';
+					info += resultado.rows[0].nome +'='+ resultado.rows[0].valor+'&';
+					info += resultado.rows[1].nome +'='+ resultado.rows[1].valor+'&';
+					info += resultado.rows[2].nome +'='+ resultado.rows[2].valor+'&';
+					info += resultado.rows[3].nome +'='+ resultado.rows[3].valor+'&';
+					info += resultado.rows[4].nome +'='+ resultado.rows[4].valor+'&';
+					info += resultado.rows[5].nome +'='+ resultado.rows[5].valor+'&';
+					info += resultado.rows[6].nome +'='+ resultado.rows[6].valor+'&';
+					info += resultado.rows[7].nome +'='+ resultado.rows[7].valor+'&';
+					info += resultado.rows[8].nome +'='+ resultado.rows[8].valor+'&';
+					info += resultado.rows[9].nome +'='+ resultado.rows[9].valor+'&';
+					info += resultado.rows[10].nome +'='+ resultado.rows[10].valor+'&';
+					info += resultado.rows[11].nome +'='+ resultado.rows[11].valor+'&';
+					info += resultado.rows[12].nome +'='+ resultado.rows[12].valor+'&';
+					info += resultado.rows[13].nome +'='+ resultado.rows[13].valor+'&';
+					info += resultado.rows[14].nome +'='+ resultado.rows[14].valor+'&';
+					info += resultado.rows[15].nome +'='+ resultado.rows[15].valor+'&';
+					info += resultado.rows[16].nome +'='+ resultado.rows[16].valor+'&';
+					info += resultado.rows[17].nome +'='+ resultado.rows[17].valor+'&';
+					info += resultado.rows[18].nome +'='+ resultado.rows[18].valor+'&';
+					info += resultado.rows[19].nome +'='+ resultado.rows[19].valor;
+
+				if(resultado.rows[5].valor == 'sim'){
+						window.location.href = info
+				} else {
+					window.location.href = 'login.html'
+				}
+        }, null);
+    });
+
+			/*window.location.href = 'login.html'*/
+
+		</script>
 	</body>
 </html>
 </body>

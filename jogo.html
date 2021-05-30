@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jogo.css" rel="stylesheet">
     <title>jogo</title>
 </head>
 <body style="background-color: black;">
@@ -31,21 +32,358 @@
             </div>
        
         </div>
-        <div class="row" style="width:100%; height: 51.25vh; background-color: transparent;">.</div>
+        <div class="row" style="width:110%; height: 51.25vh; background-color: transparent;text-align: center;" id="painel">
+        </div>
         </div>
         <div class="row">
             <div class="col-12" style="font-size:small; color: white; text-align: center;">
-                <h4>Identifique a placa</h4><br>
-                <button class="btn rounded btn-primary">Opção 1</button><br>
-                <button class="btn rounded btn-primary">Opção 2</button><br>
-                <button class="btn rounded btn-primary">Opção 3</button><br><br>
-                <button class="btn rounded btn-danger">Desistir</button>
+                <h5>Identifique a placa</h5>
+                <div id="btn0" style="width: 90%; text-align: center;"></div>
+                <div id="btn1" style="width: 90%; text-align: center;"></div>
+                <div id="btn2" style="width: 90%; text-align: center;"></div>
+                <div id="botaoApoio" style="width: 90%; text-align: center;"></div>
             </div>
         </div>
     </div>
     <audio preload="auto" autoplay>
         <source src="audio/jogo.mp3" type="audio/mpeg">
     </audio>
+    
 </body>
 <script src="js/bootstrap.bundle.min.js"></script>
+<script>
+
+var botoes =[
+'A-1a - Curva Acentuada<br>à Esquerda',
+'A-1b - Curva Acentuada<br>à Direita',
+'A-2a - Curva à Esquerda',
+'A-2b - Curva à Direita',
+'A-3a - Pista sinuosa<br>à Esquerda',
+'A-3b - Pista sinuosa à Direita',
+'A-4a - Curva Acentuada<br>em S à Esquerda',
+'A-4b - Curva Acentuada<br>em S à Direita',
+'A-5a - Curva em S à Esquerda',
+'A-5b - Curva em S à Direita',
+'A-6 - Cruzamento',
+'A-7a - Entroncamento<br>à Esquerda',
+'A-7b - Entroncamento à Direita',
+'A-8 - Interseção em T',
+'A-9 - Bifurcação em Y',
+'A-10a - Entroncamento<br>Oblíquo à Esquerda',
+'A-10b - Entroncamento<br>Oblíquo à Direita',
+'A-11a - Junções Contrárias<br>Primeira à Esquerda',
+'A- 11b - Junções Contrárias<br>Primeira à Direita',
+'A-12 - Carrossel',
+'A-13a - Confluência à Esquerda',
+'A-13a - Confluência à Direita',
+'A-14 - Semáforo à Frente',
+'A-15 - Parada à Frente',
+'A-16 - Bonde',
+'A-17 - Pista Irregular',
+'A-18 - Saliência ou Lombada',
+'A-19 - Depressão',
+'A-20a - Declive Acentuado',
+'A-20b - Aclive Acentuado',
+'A-21a - Estreitamento<br>de Pista ao Centro',
+'A-21b - Estreitamento<br>de Pista à Esquerda',
+'A-21c - Estreitamento<br>de Pista à Direita',
+'A-21d - Alargamento<br>de Pista à Esquerda',
+'A-21e - Alargamento<br>de Pista à Direita',
+'A-22 - Ponte Estreita',
+'A-23 - Ponte móvel',
+'A-24 - Obras',
+'A-25 - Mão Dupla à Frente',
+'A-26a - Sentido Único',
+'A-26b - Sentido Duplo',
+'A-27 - Área com Desmoronamento',
+'A-28 - Pista Escorregadia',
+'A-29 - Projeção de Cascalho',
+'A-30a - Trânsito de Ciclistas',
+'A-30b - Passagem<br>Sinalizada de Ciclistas',
+'A-30c - Trânsito de<br>Ciclistas e Pedestres',
+'A-31 - Trânsito de Tratores',
+'A-32a - Passagem de Pedestres',
+'A-32b - Passagem<br>Sinalizada de Pedestres',
+'A-33a - Área Escolar',
+'A-33b - Passagem<br>Sinalizada de Escolares',
+'A-34 - Crianças',
+'A-35 - Animais',
+'A-36 - Animais selvagens',
+'A-37 - Altura limitada',
+'A-38 - Largura limitada',
+'A-39 - Passagem de Nível<br>sem Barreira',
+'A-40 - Passagem de Nível<br>com Barreira',
+'A-41 - Cruz de Santo André',
+'A-42a  Início de Pista Dupla',
+'A-42b - Fim de Pista Dupla',
+'A-42c - Pista Dividida',
+'A-43 - Aeroporto',
+'A-44 - Vento Lateral',
+'A-45 - Rua sem Saída',
+'A-46 - Peso Bruto<br>Total Limitado',
+'A-47 - Peso Limitado por Eixo',
+'A-48 - Comprimento limitado',
+'R-1 - Parada obrigatória',
+'R-2 - Dê a preferência',
+'R-3 - Sentido proibido<br>(Não entre)',
+'R-4a - Proibido virar<br>à esquerda',
+'R-4b - Proibido virar<br>à direita',
+'R-5a - Proibido retornar<br>à esquerda',
+'R-5b - Proibido retornar<br>à direita',
+'R-6a - Proibido estacionar',
+'R-6b - Estacionamento<br>regulamentado',
+'R-6c - Proibido parar<br>e estacionar',
+'R-7 - Proibido ultrapassar',
+'R-8a - Proibido mudar<br>de faixa para a direita',
+'R-8b - Proibido mudar<br>de faixa para a esquerda',
+'R-9 - Proibido trânsito<br>de caminhões',
+'R-10 - Proibido trânsito<br>de automóveis',
+'R-11 - Proibido trânsito de<br>veículos de tração animal',
+'R-12 - Proibido trânsito<br>de bicicletas',
+'R-13 - Proibido trânsito<br>de tratores',
+'R-14 - Peso bruto total<br>máximo permitido',
+'R-16 -Largura máxima permitida',
+'R-17 - Peso máximo<br>permitido por eixo',
+'R-18 - Comprimento<br>máximo permitido',
+'R-19 - Velocidade<br>máxima permitida',
+'R-20 - Proibido acionar<br>buzina ou sinal sonoro',
+'R-21 - Alfândega',
+'R-22 - Uso obrigatório<br>de corrente',
+'R-23 - Conserve-se à direita',
+'R-24a - Sentido obrigatório',
+'R-24b - Passagem obrigatória',
+'R-25a - Vire à esquerda',
+'R-25b - Vire à direita',
+'R-25c - Siga em frente<br>ou à esquerda',
+'R-25d - Siga em frente<br>ou à direita',
+'R-26 - Siga em frente',
+'R-27 - Veículos pesados<br>mantenham-se à direita',
+'R-28 - Sentido duplo',
+'R-29 - Proibido trânsito<br>de pedestres',
+'R-30 - Pedestre,<br>ande pela esquerda',
+'R-31 - Pedestre,<br>ande pela direita',
+'R-32 - Circulação<br>exclusiva de ônibus',
+'R-33 - Rotatória',
+'R-34 - Circulação exclusiva<br>de bicicletas',
+'R-35a - Ciclista,<br>transite à esquerda',
+'R-35b - Ciclista,<br>transite à direita',
+'R-36a - Ciclistas à esquerda,<br>pedestres à direita',
+'R-36b - Pedestres à esquerda,<br>ciclistas à direita',
+'R-37 - Proibido trânsito<br>de motocicletas,<br>motonetas e ciclomotores',
+'R-38 - Proibido trânsito<br>de ônibus',
+'R-39 - Circulação exclusiva<br>de caminhões',
+'R-40 - Trânsito proibido<br>a carros de mão',
+'Use o cinto de segurança',
+'Obedeça a sinalização',
+'Não jogue lixo na rodovia<br>A natureza agradece',
+'Ajude a cuidar do patrimônio natural<br>dirija com atenção',
+'Preserve a natureza<br>pense nas gerações futuras',
+];
+
+var placas = [
+'Brasil_A-1a.svg.png',
+'Brasil_A-1b.svg.png',
+'Brasil_A-2a.svg.png',
+'Brasil_A-2b.svg.png',
+'Brasil_A-3a.svg.png',
+'Brasil_A-3b.svg.png',
+'73px-Brasil_A-4a.svg.png',
+'73px-Brasil_A-4b.svg.png',
+'Brasil_A-5a.svg.png',
+'Brasil_A-5b.svg.png',
+'Brasil_A-6.svg.png',
+'Brasil_A-7a.svg.png',
+'Brasil_A-7b.svg.png',
+'73px-Brasil_A-8.svg.png',
+'73px-Brasil_A-9.svg.png',
+'Brasil_A-10a.svg.png',
+'Brasil_A-10b.svg.png',
+'Brasil_A-11a.svg.png',
+'Brasil_A-11b.svg.png',
+'Brasil_A-12.svg.png',
+'Brasil_A-13a.svg.png',
+'Brasil_A-13b.svg.png',
+'Brasil_A-14.svg.png',
+'Brasil_A-15.svg.png',
+'73px-Brasil_A-16.svg.png',
+'Brasil_A-17.svg.png',
+'Brasil_A-18.svg.png',
+'Brasil_A-19.svg.png',
+'Brasil_A-20a.svg.png',
+'Brasil_A-20b.svg.png',
+'Brasil_A-21a.svg.png',
+'73px-Brasil_A-21b.svg.png',
+'73px-Brasil_A-21c.svg.png',
+'73px-Brasil_A-21d.svg.png',
+'73px-Brasil_A-21e.svg.png',
+'73px-Brasil_A-22.svg.png',
+'73px-Brasil_A-23.svg.png',
+'Brasil_A-24.svg.png',
+'Brasil_A-25.svg.png',
+'73px-Brasil_A-26a.svg.png',
+'73px-Brasil_A-26b.svg.png',
+'73px-Brasil_A-27.svg.png',
+'Brasil_A-28.svg.png',
+'73px-Brasil_A-29.svg.png',
+'73px-Brasil_A-30a.svg.png',
+'73px-Brasil_A-30b.svg.png',
+'73px-Brasil_A-30c.svg.png',
+'73px-Brasil_A-31.svg.png',
+'Brasil_A-32a.svg.png',
+'73px-Brasil_A-32b.svg.png',
+'Brasil_A-33a.svg.png',
+'73px-Brasil_A-33b.svg.png',
+'Brasil_A-34.svg.png',
+'73px-Brasil_A-35.svg.png',
+'Brasil_A-36.svg.png',
+'73px-Brasil_A-37.svg.png',
+'73px-Brasil_A-38.svg.png',
+'Brasil_A-39.svg.png',
+'Brasil_A-40.svg.png',
+'73px-Brasil_A-41b.svg.png',
+'73px-Brasil_A-42a.svg.png',
+'73px-Brasil_A-42b.svg.png',
+'73px-Brasil_A-42c.svg.png',
+'73px-Brasil_A-43.svg.png',
+'73px-Brasil_A-44.svg.png',
+'73px-Brasil_A-45.svg.png',
+'73px-Brasil_A-46.svg.png',
+'73px-Brasil_A-47.svg.png',
+'73px-Brasil_A-48.svg.png',
+'Brasil_R-1.svg.png',
+'Brasil_R-2.svg.png',
+'Brasil_R-3.svg.png',
+'Brasil_R-4a.svg.png',
+'Brasil_R-4b.svg.png',
+'Brasil_R-5a.svg.png',
+'73px-Brasil_R-5b.svg.png',
+'Brasil_R-6a.svg.png',
+'Brasil_R-6b.svg.png',
+'Brasil_R-6c.svg.png',
+'Brasil_R-7.svg.png',
+'Brasil_R-8a.svg.png',
+'73px-Brasil_R-8b.svg.png',
+'Brasil_R-9.svg.png',
+'Brasil_R-10.svg.png',
+'73px-Brasil_R-11.svg.png',
+'Brasil_R-12.svg.png',
+'Brasil_R-13.svg.png',
+'Brasil_R-14.svg.png',
+'Brasil_R-16.svg.png',
+'Brasil_R-17.svg.png',
+'Brasil_R-18.svg.png',
+'Brasil_R-19.svg.png',
+'73px-Brasil_R-20.svg.png',
+'Brasil_R-21.svg.png',
+'73px-Brasil_R-22.svg.png',
+'73px-Brasil_R-23.svg.png',
+'Brasil_R-24a.svg.png',
+'Brasil_R-24b.svg.png',
+'Brasil_R-25a.svg.png',
+'Brasil_R-25b.svg.png',
+'Brasil_R-25c.svg.png',
+'Brasil_R-25d.svg.png',
+'Brasil_R-26.svg.png',
+'73px-Brasil_R-27.svg.png',
+'Brasil_R-28.svg.png',
+'Brasil_R-29.svg.png',
+'73px-Brasil_R-30.svg.png',
+'73px-Brasil_R-31.svg.png',
+'Brasil_R-32.svg.png',
+'Brasil_R-33.svg.png',
+'Brasil_R-34.svg.png',
+'73px-Brasil_R-35a.svg.png',
+'73px-Brasil_R-35b.svg.png',
+'73px-Brasil_R-36a.svg.png',
+'73px-Brasil_R-36b.svg.png',
+'73px-Brasil_R-37.svg.png',
+'Brasil_R-38.svg.png',
+'Brasil_R-39.svg.png',
+'73px-Brasil_R-40.svg.png',
+'Use_o_cinto_br_placa_educativa.png',
+'Obedece_a_sinalizacao_br_placa_educativa.png',
+'Nao_jogue_lixo_rs_placa_educativa.png',
+'Cuidar_do_patrimonio_natural_rs_placa_educativa.png',
+'Preserve_a_natureza_rs_placa_educativa.png',
+];
+var demora
+var erros=0
+montaJogo()
+
+function montaJogo(){
+    document.getElementById('painel').style.backgroundColor = "transparent"
+    document.getElementById('painel').innerHTML='<div id="placa2"></div><div id="placa1"></div>'
+    // sorteando as opções e alterando o rotulo dos botões
+opcoes = [];
+var numeroAnterior = -1;
+var count = 0;
+while(count!=3){
+    var numeroAtual = parseInt(Math.random() * (124 - 0) + 0);
+    if(numeroAtual!=numeroAnterior){
+        opcoes.push(numeroAtual);
+        var idBotao = 'btn' + count;
+        document.getElementById(idBotao).innerHTML = '<button class="btn rounded btn-primary" style="width:90vw; " onclick="javascript: conferePlaca('+ count +')">'+botoes[numeroAtual]+'</button>';
+        count++
+    }
+    numeroAnterior = numeroAtual;
+}
+
+document.getElementById("botaoApoio").innerHTML='<button class="btn rounded btn-danger"style="width: 90vw" onclick="javascript: sair()">Sair</button>'
+
+// sorteando a opção correta e a placa a ser exibida
+
+correto = parseInt(Math.random() * (3 - 0) + 0)
+console.log(correto);
+var figure= "<img src='img/" + placas[opcoes[correto]] + "' id='figura'>";
+
+// escolhendo o lado em que a placa vai ser exibida e carregando na página
+var direita = parseInt(Math.random() * 2)
+if(direita == 1){ // vai para a direita
+    document.getElementById('placa1').innerHTML = figure;
+}else{// vai para a esquerda
+    document.getElementById('placa2').innerHTML = figure;
+}
+
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function conferePlaca(botao){
+
+ 
+    document.getElementById("botaoApoio").innerHTML = '<button class="btn rounded btn-danger"style="width: 90vw" onclick="javascript: montaJogo()">Continuar</button>'
+    
+ for(var count=0;count<3;count++){
+     if(count==correto){
+        document.getElementById('btn'+count).innerHTML = '<button disabled class="btn rounded btn-success" style="width: 90vw;" onclick="javascript: conferePlaca('+ count +')">'+botoes[opcoes[count]]+'</button>';
+     }else{
+        document.getElementById('btn'+count).innerHTML = '<button disabled class="btn rounded btn-danger" style="width: 90vw;" onclick="javascript: conferePlaca('+ count +')">'+botoes[opcoes[count]]+'</button>';
+
+     }
+}  
+
+if(botao==correto){
+    document.getElementById('painel').style.backgroundColor = "rgba(0,255,0,.5)"
+    document.getElementById('painel').innerHTML="<h1 id='acertou'>ACERTOU!</h1>"
+    
+}else if(botao==3){
+    document.getElementById('painel').style.backgroundColor = "rgba(255,0,0,.5)"
+    document.getElementById('painel').innerHTML="<h1 id='demorou'>DEMOROU!</h1>"
+} else{
+    document.getElementById('painel').style.backgroundColor = "rgba(255,0,0,.5)"
+    document.getElementById('painel').innerHTML="<h1 id='errou'>ERROU!</h1>"
+    erros++
+    if(erros == 3){
+        erros = 0
+        setInterval(window.location.href="acidente.html",3000)
+    }
+}
+
+}
+
+function sair(){
+    if(confirm("Deseja realmente sair?")){
+        window.location.href="main.html"
+    }
+}
+
+</script>
 </html>

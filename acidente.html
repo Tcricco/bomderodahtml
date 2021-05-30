@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="3; url=jogo.html">
+    <title>Document</title>
+    <style>
+        body{
+            background-image:url('acidente1.gif');
+            background-size: cover;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: x-large;
+            text-align: center; 
+        }
+
+        #parabens{
+            color:red;
+            animation-name: para;
+            animation-duration: 1.5s;
+            margin-top: 33vh;
+        }
+
+
+        @keyframes para{
+            from{
+                margin-top: -10vh;
+            }
+
+            to {
+                margin-top: 33vh;
+                
+            }
+        }
+
+
+
+    </style>
+
+</head>
+<body style="background-image:url('img/acidente1.gif');background-size: cover;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: x-large;text-align: center"></body>
+<h1 id="parabens">PARABÉNS<br><h2>Você bateu!</h2></h1>
+<audio preload="auto" autoplay>
+    <source src="audio/batida.mp3" type="audio/mpeg">
+</audio>
+</body>
+</html>

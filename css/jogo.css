@@ -1,0 +1,104 @@
+#placa1{
+    visibility:hidden;
+    animation-duration: 7.5s;
+    animation-name: direita;  
+}
+
+#placa2{
+    visibility:hidden;
+    animation-duration: 7.5s;
+    animation-name: esquerda;  
+}
+
+#errou{
+
+    position:absolute;
+    text-align: center;
+    margin-left: 35vw;
+    color:white;
+    font-weight: bolder;
+    margin-top: 23vh;
+    animation-duration: 1.5s;
+    animation-name: resposta;  
+}
+
+#acertou{
+
+    position:absolute;
+    text-align: center;
+    margin-left: 17vh;
+    color:white;
+    font-weight: bolder;
+    margin-top: 23vh;
+    animation-duration: 1.5s;
+    animation-name: resposta;  
+}
+
+#demorou{
+
+    position:absolute;
+    text-align: center;
+    margin-left: auto;
+    color:white;
+    font-weight: bolder;
+    margin-top: 23vh;
+    animation-duration: 1.5s;
+    animation-name: resposta;  
+}
+
+
+@keyframes direita{
+    from{
+        position: absolute;
+        margin-left:60vw;
+        margin-top: 22vh;
+        visibility: visible;
+        height: 10px;
+        width:auto;
+        transform: scale(0.5);
+    }
+
+    to {
+        position: absolute;
+        margin-left: 115vw;
+        margin-top: 27vh;
+        height: 50px;
+        width:auto;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes esquerda{
+    from{
+        position: absolute;
+        margin-left: 35vw;
+        margin-top: 25vh;
+        visibility: visible;
+        height: 10px;
+        width:auto;
+        transform: scale(0.5);
+    }
+
+    to {
+        position: absolute;
+        margin-left: -15vw;
+        margin-top: 30vh;
+        height: 50px;
+        width:auto;
+        transform: scale(1);
+    }
+}
+
+@keyframes resposta{
+    from{
+        visibility: visible;
+        transform: scale(0.1);
+        text-align: center;
+    }
+
+    to {
+        transform: scale(1);
+        text-align: center;
+    }
+}
