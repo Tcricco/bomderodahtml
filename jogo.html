@@ -308,6 +308,7 @@ var placas = [
 ];
 var demora
 var erros=0
+
 montaJogo()
 
 function montaJogo(){
@@ -327,6 +328,8 @@ while(count!=3){
     }
     numeroAnterior = numeroAtual;
 }
+
+setTimeout(function(){ conferePlaca(3); }, 20000);
 
 document.getElementById("botaoApoio").innerHTML='<button class="btn rounded btn-danger"style="width: 90vw" onclick="javascript: sair()">Sair</button>'
 
